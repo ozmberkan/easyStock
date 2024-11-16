@@ -2,7 +2,7 @@ import { CgShutterstock } from "react-icons/cg";
 
 const Logo = () => {
   return (
-    <div className="pb-2 border-b border-zinc-300 flex justify-between items-center">
+    <div className="pb-4 border-b border-zinc-300 flex justify-between items-center">
       <div className="flex gap-x-1 items-center rounded-xl text-zinc-600">
         <span className="animate-pulse ">
           <CgShutterstock size={23} />
