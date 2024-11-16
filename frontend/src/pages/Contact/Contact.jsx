@@ -5,7 +5,7 @@ import Breadcrumb from "~/components/UI/Breadcrumb";
 
 const Contact = () => {
   return (
-    <div className="flex flex-col gap-6 flex-grow h-full">
+    <div className="flex flex-col gap-4 flex-grow h-full">
       <Breadcrumb title="İletişim" Icon={IoChatboxEllipsesOutline} />
       <h1 className="font-semibold text-2xl text-neutral-700">İletişime geç</h1>
       <div className="flex flex-grow w-full items-center gap-x-7">
@@ -17,16 +17,16 @@ const Contact = () => {
                   <h2 className="text-sm text-neutral-600">{input.label}</h2>
                   <div className="flex items-center gap-x-1 rounded-lg border min-h-44 max-h-44 ">
                     <textarea
-                      className="min-h-44 max-h-44  w-full bg-transparent text-sm p-3 outline-none"
+                      className="min-h-44 max-h-44  w-full bg-white rounded-lg text-sm p-3 outline-none"
                       placeholder={input.placeholder}
                       type={input.type}
                     />
                   </div>
                 </div>
               ) : (
-                <div key={i} className="flex flex-col gap-y-1">
+                <div key={input.id} className="flex flex-col gap-y-1">
                   <h2 className="text-sm text-neutral-600">{input.label}</h2>
-                  <div className="flex items-center gap-x-1 rounded-lg border h-10 px-4">
+                  <div className="flex items-center bg-white gap-x-1 rounded-lg border h-10 px-4">
                     <label>
                       {input.Icon && (
                         <input.Icon className="text-neutral-500" />
