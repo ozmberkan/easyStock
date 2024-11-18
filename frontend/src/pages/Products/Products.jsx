@@ -37,12 +37,12 @@ const Products = () => {
   };
 
   return (
-    <div className="w-full h-full px-6 py-4">
+    <div className="w-full h-full lg:px-6 lg:py-4">
       {products.length > 0 && <Breadcrumb title="Ürünler" Icon={BiBox} />}
       {sortedProducts.length > 0 ? (
         <div className="flex flex-col py-4">
           <div className="overflow-x-auto">
-            <div className="min-w-full inline-block align-middle">
+            <div className="lg:min-w-full min-w-3/4 inline-block align-middle">
               <div className="border border-gray-300 rounded-lg shadow overflow-hidden dark:border-neutral-700">
                 <table className="min-w-full bg-white divide-y divide-gray-200 dark:bg-neutral-800 dark:divide-neutral-700">
                   <thead>

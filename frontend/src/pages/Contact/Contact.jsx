@@ -8,8 +8,8 @@ const Contact = () => {
     <div className="flex flex-col gap-4 flex-grow h-full">
       <Breadcrumb title="İletişim" Icon={IoChatboxEllipsesOutline} />
       <h1 className="font-semibold text-2xl text-neutral-700">İletişime geç</h1>
-      <div className="flex flex-grow w-full items-center gap-x-7">
-        <div className="flex-grow  h-full flex justify-start items-start border-r pr-24 ">
+      <div className="flex flex-grow w-full lg:flex-row flex-col items-center gap-7">
+        <div className="flex-grow h-full flex justify-start items-start lg:border-r lg:pr-24  ">
           <form className="w-full flex flex-col gap-5">
             {contactInputs.map((input, i) => {
               return input.type === "textarea" ? (
