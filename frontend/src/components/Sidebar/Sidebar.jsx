@@ -1,6 +1,6 @@
 import Logo from "../UI/Logo";
 import { IoMdExit } from "react-icons/io";
-import { TbUsersGroup, TbHome, TbUser } from "react-icons/tb";
+import { TbHome, TbUsers } from "react-icons/tb";
 import MainMenu from "./children/MainMenu";
 import { IoChatboxEllipsesOutline } from "react-icons/io5";
 import { BiBox } from "react-icons/bi";
@@ -15,16 +15,18 @@ const Sidebar = () => {
           linkTitles={[
             { name: "Anasayfa", path: "/", icon: TbHome },
             { name: "Ürünler", path: "/products", icon: BiBox },
+          ]}
+        />
+        <MainMenu
+          label="BİZ KİMİZ"
+          linkTitles={[
+            { name: "Hakkımızda", path: "/about", icon: TbUsers },
             {
               name: "İletişim",
               path: "/contact",
               icon: IoChatboxEllipsesOutline,
             },
           ]}
-        />
-        <MainMenu
-          label="Profil"
-          linkTitles={[{ name: "Profilim", path: "/profile", icon: TbUser }]}
         />
         <button className="mt-auto bg-red-100 text-red-700 font-medium px-4 py-2 rounded-md flex justify-start items-center gap-x-2 hover:bg-red-700 hover:text-white transition-all duration-300">
           <IoMdExit />

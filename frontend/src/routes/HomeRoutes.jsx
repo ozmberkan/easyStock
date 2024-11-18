@@ -1,9 +1,9 @@
 import Layout from "~/layouts/Layout";
+import About from "~/pages/About/About";
 import Contact from "~/pages/Contact/Contact";
 import Home from "~/pages/Home/Home";
 import Product from "~/pages/Product/Product";
 import Products from "~/pages/Products/Products";
-import Profile from "~/pages/Profile/Profile";
 
 export const HomeRoutes = {
   path: "/",
@@ -13,6 +13,6 @@ export const HomeRoutes = {
     { path: "/products", element: <Products /> },
     { path: "/products/:id", element: <Product /> },
     { path: "/contact", element: <Contact /> },
-    { path: "/profile", element: <Profile /> },
+    { path: "/about", element: <About /> },
   ],
 };

@@ -7,12 +7,28 @@ const initialState = {
       image: "https://via.placeholder.com/150",
       name: "Örnek Ürün",
       stock: 6,
+      createdAt: "13.11.2024",
     },
     {
       id: 2,
       image: "https://via.placeholder.com/150",
       name: "Örnek Ürün 2",
       stock: 3,
+      createdAt: "17.11.2024",
+    },
+    {
+      id: 3,
+      image: "https://via.placeholder.com/150",
+      name: "Örnek Ürün 3",
+      stock: 25,
+      createdAt: "15.11.2024",
+    },
+    {
+      id: 4,
+      image: "https://via.placeholder.com/150",
+      name: "Örnek Ürün 3",
+      stock: 45,
+      createdAt: "15.11.2024",
     },
   ],
 };
