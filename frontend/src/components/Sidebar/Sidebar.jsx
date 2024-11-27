@@ -6,6 +6,7 @@ import { IoChatboxEllipsesOutline } from "react-icons/io5";
 import { BiBox } from "react-icons/bi";
 import { useMediaQuery } from "react-responsive";
 import MobileBar from "./MobileBar";
+import { BsDatabaseAdd } from "react-icons/bs";
 
 const Sidebar = () => {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
@@ -23,12 +24,12 @@ const Sidebar = () => {
           linkTitles={[
             { name: "Anasayfa", path: "/", icon: TbHome },
             { name: "Ürünler", path: "/products", icon: BiBox },
+            { name: "Ürün Ekle", path: "/add-product", icon: BsDatabaseAdd },
           ]}
         />
         <MainMenu
           label="BİZ KİMİZ"
           linkTitles={[
-            { name: "Hakkımızda", path: "/about", icon: TbUsers },
             {
               name: "İletişim",
               path: "/contact",
@@ -36,10 +37,6 @@ const Sidebar = () => {
             },
           ]}
         />
-        <button className="mt-auto bg-red-100 text-red-700 font-medium px-4 py-2 rounded-md flex justify-start items-center gap-x-2 hover:bg-red-700 hover:text-white transition-all duration-300">
-          <IoMdExit />
-          Çıkış
-        </button>
       </div>
     </div>
   );

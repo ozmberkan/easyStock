@@ -51,3 +51,27 @@ export const productsTableTitle = [
   { id: 4, title: "Stok", key: "stock", sortable: true },
   { id: 5, title: "İşlem", key: "action", sortable: false },
 ];
+
+export const addProductInputs = [
+  {
+    id: 1,
+    label: "Ürün Adı",
+    type: "text",
+    name: "ProductName",
+    placeholder: "Ürün adı giriniz..",
+  },
+  {
+    id: 2,
+    label: "Ürün Stoğu",
+    type: "number",
+    name: "ProductStock",
+    placeholder: "Ürün stoğu giriniz..",
+  },
+  {
+    id: 3,
+    label: "Ürün Görseli",
+    type: "text",
+    name: "ProductImage",
+    placeholder: "Ürün görseli URL giriniz..",
+  },
+];

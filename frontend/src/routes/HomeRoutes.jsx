@@ -1,5 +1,5 @@
 import Layout from "~/layouts/Layout";
-import About from "~/pages/About/About";
+import Add from "~/pages/Add/Add";
 import Contact from "~/pages/Contact/Contact";
 import Home from "~/pages/Home/Home";
 import Product from "~/pages/Product/Product";
@@ -13,6 +13,6 @@ export const HomeRoutes = {
     { path: "/products", element: <Products /> },
     { path: "/products/:id", element: <Product /> },
     { path: "/contact", element: <Contact /> },
-    { path: "/about", element: <About /> },
+    { path: "/add-product", element: <Add /> },
   ],
 };

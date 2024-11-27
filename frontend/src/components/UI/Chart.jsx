@@ -28,7 +28,7 @@ const Chart = ({ data, dataKey }) => {
         </defs>
         <CartesianGrid strokeDasharray="3 3" stroke="#e0e0e0" />
         <XAxis
-          dataKey="name"
+          dataKey="productName"
           tick={{ fill: "#D9D9D9" }}
           axisLine={{ stroke: "#ccc" }}
           tickLine={false}
@@ -37,11 +37,18 @@ const Chart = ({ data, dataKey }) => {
           tick={{ fill: "#D9D9D9" }}
           axisLine={{ stroke: "#ccc" }}
           tickLine={false}
+          label={{
+            value: "Stok Sayısı", // Y eksenindeki etiket
+            angle: -90,
+            position: "insideLeft",
+            fill: "#D9D9D9",
+          }}
         />
         <Tooltip
           contentStyle={{ backgroundColor: "#ffffff", borderRadius: 5 }}
           labelStyle={{ fontWeight: "bold" }}
           cursor={{ fill: "#f5f5f5" }}
+          formatter={(value) => [`${value} adet`, "Stok Sayısı"]} // Tooltip içeriği
         />
         <Area
           type="monotone"

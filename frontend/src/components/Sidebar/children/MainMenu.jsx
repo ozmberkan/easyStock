@@ -11,7 +11,7 @@ const MainMenu = ({ label, linkTitles = [] }) => {
           <Link
             key={index}
             to={link.path}
-            className="py-2 px-2 rounded-md hover:bg-gray-200 border border-transparent hover:border-neutral-200 text-neutral-700 font-medium flex gap-x-2 items-center"
+            className="py-2 px-2 rounded-md hover:bg-gray-100 border border-transparent hover:border-neutral-100 text-neutral-700 font-medium flex gap-x-2 items-center"
           >
             {link.icon && <link.icon size={20} />}
             {link.name}

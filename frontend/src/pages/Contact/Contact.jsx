@@ -17,7 +17,7 @@ const Contact = () => {
                   <h2 className="text-sm text-neutral-600">{input.label}</h2>
                   <div className="flex items-center gap-x-1 rounded-lg border min-h-44 max-h-44 ">
                     <textarea
-                      className="min-h-44 max-h-44  w-full bg-white rounded-lg text-sm p-3 outline-none"
+                      className="min-h-44 border max-h-44  w-full bg-white rounded-lg text-sm p-3 outline-none"
                       placeholder={input.placeholder}
                       type={input.type}
                     />
