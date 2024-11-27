@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { useEffect } from "react";
 import { BiBox } from "react-icons/bi";
 import { TbAlertCircle, TbHome, TbUserSquareRounded } from "react-icons/tb";
@@ -17,7 +18,12 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="flex flex-col h-full">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      className="flex flex-col h-full"
+    >
       <Breadcrumb title="Anasayfa" Icon={TbHome} />
       <div className="w-full py-4 flex-grow grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         <div className="bg-white h-[250px] rounded-xl border shadow overflow-hidden relative">
@@ -27,7 +33,7 @@ const Home = () => {
               Hoş geldin
             </h1>
             <p className="text-sm md:text-base font-medium text-neutral-700">
-              Bugün <span className="font-bold">{products.length}</span> ürün
+              Bugün <span className="font-bold">{products?.length}</span> ürün
               kontrolü var!
             </p>
           </div>
@@ -68,7 +74,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

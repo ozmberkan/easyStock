@@ -3,10 +3,11 @@ import { useForm } from "react-hook-form";
 import { BsDatabaseAdd } from "react-icons/bs";
 import Breadcrumb from "~/components/UI/Breadcrumb";
 import { addProductInputs } from "~/data/data";
-import { addScheme } from "~/validations/scheme";
+import { addSchema } from "~/validations/scheme";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { motion } from "framer-motion";
 
 const Add = () => {
   const {
@@ -15,7 +16,7 @@ const Add = () => {
     reset,
     formState: { errors },
   } = useForm({
-    resolver: zodResolver(addScheme),
+    resolver: zodResolver(addSchema),
   });
 
   const addHandle = async (data) => {
@@ -29,7 +30,12 @@ const Add = () => {
   };
 
   return (
-    <div className="flex flex-col gap-4 flex-grow h-full">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      className="flex flex-col gap-4 flex-grow h-full"
+    >
       {/* Sayfa başlığı */}
       <Breadcrumb title="Ürün Ekle" Icon={BsDatabaseAdd} />
       <div className="my-5">
@@ -66,12 +72,13 @@ const Add = () => {
         ))}
         <button
           type="submit"
-          className={`px-4 py-2 rounded-md text-black transition-colors `}
+          className="px-4 py-2 flex items-center justify-center gap-x-2 rounded-md bg-neutral-500 text-white hover:bg-neutral-600 transition-colors"
         >
+          <BsDatabaseAdd />
           Oluştur
         </button>
       </form>
-    </div>
+    </motion.div>
   );
 };
 

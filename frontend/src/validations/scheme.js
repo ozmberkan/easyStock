@@ -1,6 +1,6 @@
 import z from "zod";
 
-export const addScheme = z.object({
+export const addSchema = z.object({
   ProductName: z.string().min(3, "Lütfen minimum 3 karakter giriniz.").max(255),
   ProductStock: z.preprocess(
     (value) => Number(value),
@@ -10,4 +10,10 @@ export const addScheme = z.object({
       .min(1, "Lütfen 1'den büyük bir değer giriniz.")
   ),
   ProductImage: z.string().url("Lütfen geçerli bir URL giriniz."),
+});
+
+export const contactSchema = z.object({
+  Name: z.string().min(3, "Lütfen minimum 3 karakter giriniz.").max(255),
+  Title: z.string().min(5, "Lütfen minimum 5 karakter giriniz.").max(255),
+  Message: z.string().min(10, "Lütfen minimum 10 karakter giriniz."),
 });

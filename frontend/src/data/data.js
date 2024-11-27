@@ -13,20 +13,22 @@ import {
 export const contactInputs = [
   {
     label: "Adınız Soyadınız",
+    name: "Name",
     Icon: TbUser,
     placeholder: "Adınızı ve soyadınızı giriniz..",
     type: "text",
   },
   {
     label: "Konu Başlığı",
+    name: "Title",
     Icon: MdOutlineSubtitles,
     placeholder: "Konu başlığı giriniz..",
     type: "text",
   },
   {
-    label: "Konu Başlığı",
-    Icon: TbPhone,
-    placeholder: "Konu başlığı giriniz..",
+    label: "Konu İçeriği",
+    name: "Message",
+    placeholder: "İçeriği giriniz..",
     type: "textarea",
   },
 ];
