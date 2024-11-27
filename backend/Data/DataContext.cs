@@ -6,5 +6,7 @@ namespace backend.Data
     {
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
         public DbSet<Product> Products => Set<Product>();
+
+        public DbSet<Contact> Contacts => Set<Contact>();
     }
 }
