@@ -6,16 +6,17 @@ import { TbHome, TbUsers } from "react-icons/tb";
 import { BiBox } from "react-icons/bi";
 import { IoChatboxEllipsesOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
+import { BsDatabaseAdd } from "react-icons/bs";
+import { HiOutlineChatBubbleLeftRight } from "react-icons/hi2";
 
 const linkBase = [
   { path: "/", icon: TbHome },
   { path: "/products", icon: BiBox },
+  { path: "/add-product", icon: BsDatabaseAdd },
+  { path: "/feedbacks", icon: HiOutlineChatBubbleLeftRight },
 ];
 
-const linkWeWho = [
-  { path: "/about", icon: TbUsers },
-  { path: "/contact", icon: IoChatboxEllipsesOutline },
-];
+const linkWeWho = [{ path: "/contact", icon: IoChatboxEllipsesOutline }];
 
 const MobileBar = () => {
   return (
@@ -41,7 +42,7 @@ const MobileBar = () => {
         </div>
         <div className="flex flex-col justify-center items-center">
           <h1 className="text-xs font-semibold text-neutral-800 mb-2 uppercase">
-            BİZ KİMİZ
+            YARDIM
           </h1>
           <ul className="text-sm flex flex-col gap-2">
             {linkWeWho.map((link, index) => (
