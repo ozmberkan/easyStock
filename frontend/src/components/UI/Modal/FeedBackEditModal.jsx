@@ -76,7 +76,7 @@ const FeedBackEditModal = ({ setIsModalOpen, selectedContact }) => {
             className="px-4 py-2 rounded-xl text-sm bg-white border outline-none"
             {...register("Status")}
           >
-            <option value="pending">Bekleniyor</option>
+            <option value="pending">Beklemede</option>
             <option value="succeeded">Tamamlandı</option>
             <option value="deleted">İptal Edildi</option>
           </select>

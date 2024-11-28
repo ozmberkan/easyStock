@@ -9,7 +9,6 @@ export const addSchema = z.object({
       .int()
       .min(1, "Lütfen 1'den büyük bir değer giriniz.")
   ),
-  ProductImage: z.string().url("Lütfen geçerli bir URL giriniz."),
 });
 
 export const contactSchema = z.object({

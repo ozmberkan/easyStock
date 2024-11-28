@@ -72,8 +72,7 @@ export const addProductInputs = [
   {
     id: 3,
     label: "Ürün Görseli",
-    type: "text",
+    type: "file",
     name: "ProductImage",
-    placeholder: "Ürün görseli URL giriniz..",
   },
 ];

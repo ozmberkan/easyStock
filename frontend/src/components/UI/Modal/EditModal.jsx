@@ -21,20 +21,41 @@ const EditModal = ({ selectedProduct, setEditMode }) => {
   });
 
   const updateHandle = async (data) => {
+    let uploadedImageUrl = selectedProduct.productImage;
+
+    if (data.productImage && data.productImage[0]) {
+      const file = data.productImage[0];
+
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("upload_preset", "qlsmtlwm");
+      formData.append("cloud_name", "dlzdj5p8p");
+
+      const res = await fetch(
+        `https://api.cloudinary.com/v1_1/dlzdj5p8p/image/upload`,
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+
+      const uploadedImage = await res.json();
+      uploadedImageUrl = uploadedImage.secure_url;
+    }
+
     try {
       const payload = {
         id: selectedProduct.id,
         productName: data.productName,
         productStock: data.productStock,
-        productImage: data.productImage,
+        productImage: uploadedImageUrl || "",
       };
 
-      const response = await axios.put(
+      await axios.put(
         `http://localhost:5072/api/Products/${selectedProduct.id}`,
         payload
       );
 
-      console.log("Ürün başarıyla güncellendi:", response.data);
       dispatch(getAllProducts());
       setEditMode(false);
       toast.success("Ürün başarıyla güncellendi.");
@@ -42,8 +63,6 @@ const EditModal = ({ selectedProduct, setEditMode }) => {
       console.error("Güncelleme hatası:", error);
     }
   };
-
-  
   return createPortal(
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm z-50">
       <div className="bg-white rounded-lg shadow-lg p-6 max-w-3xl w-full">
@@ -61,18 +80,16 @@ const EditModal = ({ selectedProduct, setEditMode }) => {
           onSubmit={handleSubmit(updateHandle)}
         >
           <input
-            defaultValue={selectedProduct.productName}
             className="px-4 py-2 rounded-xl text-sm bg-white border outline-none"
             {...register("productName")}
           />
           <input
-            defaultValue={selectedProduct.productStock}
             className="px-4 py-2 rounded-xl text-sm bg-white border outline-none"
             {...register("productStock")}
           />
           <input
-            defaultValue={selectedProduct.productImage}
             className="px-4 py-2 rounded-xl text-sm bg-white border outline-none"
+            type="file"
             {...register("productImage")}
           />
           <div className="flex justify-end mt-3">

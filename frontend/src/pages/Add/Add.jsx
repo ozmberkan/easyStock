@@ -1,31 +1,60 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { BsDatabaseAdd } from "react-icons/bs";
 import Breadcrumb from "~/components/UI/Breadcrumb";
 import { addProductInputs } from "~/data/data";
-import { addSchema } from "~/validations/scheme";
-import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { motion } from "framer-motion";
 
 const Add = () => {
+  const [loading, setLoading] = useState(false);
+
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm({
-    resolver: zodResolver(addSchema),
-  });
+  } = useForm();
 
   const addHandle = async (data) => {
+    setLoading(true);
+
+    const file = data.ProductImage[0];
+
+    if (!file) {
+      toast.error("Lütfen bir dosya seçiniz.");
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("upload_preset", "qlsmtlwm");
+    formData.append("cloud_name", "dlzdj5p8p");
+
     try {
-      await axios.post("http://localhost:5072/api/Products", data);
+      const res = await fetch(
+        `https://api.cloudinary.com/v1_1/dlzdj5p8p/image/upload`,
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+
+      const uploadedImage = await res.json();
+
+      const productData = {
+        ...data,
+        ProductImage: uploadedImage.secure_url,
+      };
+
+      await axios.post("http://localhost:5072/api/Products", productData);
       toast.success("Ürün başarıyla eklendi.");
       reset();
     } catch (error) {
       console.error("Ürün ekleme sırasında hata oluştu:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -36,7 +65,6 @@ const Add = () => {
       transition={{ duration: 0.5 }}
       className="flex flex-col gap-4 flex-grow h-full"
     >
-      {/* Sayfa başlığı */}
       <Breadcrumb title="Ürün Ekle" Icon={BsDatabaseAdd} />
       <div className="my-5">
         <h1 className="font-bold text-2xl">Ürün Ekle</h1>
@@ -45,7 +73,6 @@ const Add = () => {
         </p>
       </div>
 
-      {/* Form */}
       <form
         className="flex flex-col w-1/2 rounded-xl gap-5"
         onSubmit={handleSubmit(addHandle)}
@@ -75,7 +102,7 @@ const Add = () => {
           className="px-4 py-2 flex items-center justify-center gap-x-2 rounded-md bg-neutral-500 text-white hover:bg-neutral-600 transition-colors"
         >
           <BsDatabaseAdd />
-          Oluştur
+          {loading ? "Ekleniyor..." : "Ekle"}
         </button>
       </form>
     </motion.div>
