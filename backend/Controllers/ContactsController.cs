@@ -19,7 +19,7 @@ namespace backend.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Contact>>> GetContacts()
         {
-            return await _context.Contacts.ToListAsync();
+            return Ok(await _context.Contacts.ToListAsync());
         }
 
         // Get Contact by ID
@@ -27,21 +27,15 @@ namespace backend.Controllers
         public async Task<ActionResult<Contact>> GetContact(int id)
         {
             var contact = await _context.Contacts.FindAsync(id);
-            if (contact == null)
-            {
-                return NotFound();
-            }
-
-            return contact;
+            return contact == null ? NotFound() : Ok(contact);
         }
 
         // Create Contact
         [HttpPost]
-        public async Task<ActionResult<Contact>> CreateContact(Contact model)
+        public async Task<IActionResult> CreateContact(Contact model)
         {
             _context.Contacts.Add(model);
             await _context.SaveChangesAsync();
-
             return Ok(model);
         }
 
@@ -55,20 +49,7 @@ namespace backend.Controllers
             }
 
             _context.Entry(contact).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ContactExists(id))
-                {
-                    return NotFound();
-                }
-
-                throw;
-            }
+            await _context.SaveChangesAsync();
 
             return NoContent();
         }
@@ -87,11 +68,6 @@ namespace backend.Controllers
             await _context.SaveChangesAsync();
 
             return NoContent();
-        }
-
-        private bool ContactExists(int id)
-        {
-            return _context.Contacts.Any(e => e.Id == id);
         }
     }
 }
