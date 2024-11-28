@@ -18,6 +18,27 @@ Demo Link: https://easy-stock-net.vercel.app/
 - React, TailwindCSS
 - .NET WebAPI, Sqlite
 
+## Çalıştırma
+
+Önce backend dosyasını ayağa kaldırarak başlayınız
+```bash 
+  cd ./backend
+```
+```bash 
+  dotnet watch run
+```
+daha sonrasında ön yüzü çalıştırın
+```bash 
+  cd ./frontend
+```
+```bash 
+  npm run dev
+```
+
+http://localhost:5002 adresinde proje çalışacaktır.
+
+    
+
   
 ## Yazarlar ve Teşekkür
 
