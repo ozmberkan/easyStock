@@ -26,8 +26,8 @@ const MyAccount = () => {
       {/* Sayfa başlığı */}
       <Breadcrumb title="Profilim" Icon={TbUser} />
       <div className="grid grid-cols-3">
-        {contacts.length > 0 ? (
-          contacts.map((contact) => (
+        {contacts?.length > 0 ? (
+          contacts?.map((contact) => (
             <MyFeedback key={contact.id} contact={contact} />
           ))
         ) : (

@@ -28,8 +28,8 @@ const Feedbacks = () => {
         Icon={HiOutlineChatBubbleLeftRight}
       />
       <div className="grid grid-cols-4 gap-5">
-        {contacts.length > 0 ? (
-          contacts.map((contact, i) => <Feedback key={i} contact={contact} />)
+        {contacts?.length > 0 ? (
+          contacts?.map((contact, i) => <Feedback key={i} contact={contact} />)
         ) : (
           <div className="px-4 py-2 rounded-md bg-red-100 text-red-500 border border-red-500 text-sm flex items-center gap-x-2">
             <IoAlertCircleOutline />
