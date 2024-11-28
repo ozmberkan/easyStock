@@ -1,12 +1,14 @@
 import Logo from "../UI/Logo";
-import { IoMdExit } from "react-icons/io";
-import { TbHome, TbUsers } from "react-icons/tb";
+import { TbHome } from "react-icons/tb";
 import MainMenu from "./children/MainMenu";
 import { IoChatboxEllipsesOutline } from "react-icons/io5";
 import { BiBox } from "react-icons/bi";
 import { useMediaQuery } from "react-responsive";
 import MobileBar from "./MobileBar";
 import { BsDatabaseAdd } from "react-icons/bs";
+import { HiOutlineChatBubbleLeftRight } from "react-icons/hi2";
+import profile from "~/assets/profile.jpg";
+import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
@@ -25,10 +27,15 @@ const Sidebar = () => {
             { name: "Anasayfa", path: "/", icon: TbHome },
             { name: "Ürünler", path: "/products", icon: BiBox },
             { name: "Ürün Ekle", path: "/add-product", icon: BsDatabaseAdd },
+            {
+              name: "Geri Bildirimler",
+              path: "/feedbacks",
+              icon: HiOutlineChatBubbleLeftRight,
+            },
           ]}
         />
         <MainMenu
-          label="BİZ KİMİZ"
+          label="YARDIM"
           linkTitles={[
             {
               name: "İletişim",
@@ -37,6 +44,20 @@ const Sidebar = () => {
             },
           ]}
         />
+        <div className=" mt-auto pt-5 border-t ">
+          <Link
+            to="/my-account"
+            className="p-2 hover:bg-neutral-100 flex items-center gap-x-3 rounded-xl cursor-pointer"
+          >
+            <img src={profile} className="w-10 h-10 rounded-md object-cover" />
+            <div className="flex flex-col">
+              <span className="text-xs text-neutral-500">@ozmberkan</span>
+              <span className="text-xs text-neutral-500">
+                ozmberkan@gmail.com
+              </span>
+            </div>
+          </Link>
+        </div>
       </div>
     </div>
   );

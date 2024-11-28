@@ -48,7 +48,7 @@ export const contactSocial = [
 
 export const productsTableTitle = [
   { id: 1, title: "Ürün ID", key: "id", sortable: false },
-  { id: 2, title: "Ürün Görseli", key: "price", sortable: false },
+  { id: 2, title: "Ürün Görseli", key: "image", sortable: false },
   { id: 3, title: "Ürün Adı", key: "name", sortable: true },
   { id: 4, title: "Stok", key: "stock", sortable: true },
   { id: 5, title: "İşlem", key: "action", sortable: false },

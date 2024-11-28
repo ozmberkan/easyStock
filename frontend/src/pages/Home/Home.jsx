@@ -10,13 +10,12 @@ import { getAllProducts } from "~/redux/slices/productSlice";
 const Home = () => {
   const { products } = useSelector((state) => state.products);
 
-  console.log(products);
-
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAllProducts());
   }, []);
 
+  console.log(products);
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -57,20 +56,21 @@ const Home = () => {
             </h1>
             <div className="text-sm md:text-base font-medium text-neutral-700 flex flex-col w-full h-full overflow-auto gap-1">
               {products
-                ?.filter((product) => product.ProductStock < 10)
+                ?.filter((product) => product.productStock < 10)
                 ?.map((product, index) => (
-                  <span key={index}>{product.ProductName}</span>
+                  <span key={index}>{product.productName}</span>
                 ))}
             </div>
           </div>
         </div>
+
         {/* Stok Sayıları Chart */}
         <div className="bg-white rounded-xl border shadow row-span-2 col-span-1 md:col-span-2 lg:col-span-3">
           <div className="h-full p-6">
             <h1 className="text-lg md:text-xl font-semibold pb-4">
               Stok Sayıları
             </h1>
-            <Chart data={products} dataKey={"ProductStock"} />
+            <Chart data={products} dataKey={"productStock"} />
           </div>
         </div>
       </div>

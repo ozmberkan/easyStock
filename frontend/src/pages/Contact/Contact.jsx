@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { contactSchema } from "~/validations/scheme";
 import toast from "react-hot-toast";
+import { FaRegPaperPlane } from "react-icons/fa6";
 
 const Contact = () => {
   const {
@@ -83,8 +84,9 @@ const Contact = () => {
         ))}
         <button
           type="submit"
-          className="px-4 py-2 rounded-md bg-neutral-500 text-white hover:bg-neutral-600 transition-colors"
+          className="px-4 py-2 flex items-center justify-center gap-x-2 rounded-md bg-neutral-500 text-white hover:bg-neutral-600 transition-colors"
         >
+          <FaRegPaperPlane />
           Gönder
         </button>
       </form>
