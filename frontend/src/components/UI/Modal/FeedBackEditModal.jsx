@@ -60,27 +60,39 @@ const FeedBackEditModal = ({ setIsModalOpen, selectedContact }) => {
           className="flex flex-col gap-3"
           onSubmit={handleSubmit(updateHandle)}
         >
-          <input
-            className="px-4 py-2 rounded-xl text-sm bg-white border outline-none"
-            {...register("Name")}
-          />
-          <input
-            className="px-4 py-2 rounded-xl text-sm bg-white border outline-none"
-            {...register("Title")}
-          />
-          <input
-            className="px-4 py-2 rounded-xl text-sm bg-white border outline-none"
-            {...register("Message")}
-          />
-          <select
-            className="px-4 py-2 rounded-xl text-sm bg-white border outline-none"
-            {...register("Status")}
-          >
-            <option value="pending">Beklemede</option>
-            <option value="succeeded">Tamamlandı</option>
-            <option value="deleted">İptal Edildi</option>
-          </select>
-          <div className="flex justify-end mt-3">
+          <div className="flex flex-col gap-1">
+            <label className="text-sm text-zinc-500">Ad Soyad</label>
+            <input
+              className="px-4 py-2 rounded-xl text-sm bg-white border outline-none"
+              {...register("Name")}
+            />
+          </div>
+          <div className="flex flex-col gap-1">
+            <label className="text-sm text-zinc-500">Başlık</label>
+            <input
+              className="px-4 py-2 rounded-xl text-sm bg-white border outline-none"
+              {...register("Title")}
+            />
+          </div>
+
+          <div className="flex flex-col gap-1">
+            <label className="text-sm text-zinc-500">Mesaj İçeriği</label>
+            <input
+              className="px-4 py-2 rounded-xl text-sm bg-white border outline-none"
+              {...register("Message")}
+            />
+          </div>
+          <div className="flex flex-col gap-1">
+            <label className="text-sm text-zinc-500">Mesaj Durumu</label>
+            <select
+              className="px-4 py-2 rounded-xl text-sm bg-white border outline-none"
+              {...register("Status")}
+            >
+              <option value="pending">Beklemede</option>
+              <option value="succeeded">Tamamlandı</option>
+              <option value="deleted">İptal Edildi</option>
+            </select>
+            <div className="flex justify-end mt-3"></div>
             <button
               type="submit"
               className="text-sm bg-blue-100 text-blue-600 hover:bg-blue-600 hover:text-white border-blue-600/25 px-3 py-1  rounded-md border"

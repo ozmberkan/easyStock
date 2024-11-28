@@ -4,6 +4,7 @@ import { createPortal } from "react-dom";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { IoIosCloseCircleOutline } from "react-icons/io";
+import { TbAlertCircle } from "react-icons/tb";
 import { useDispatch } from "react-redux";
 import { getAllProducts } from "~/redux/slices/productSlice";
 
@@ -66,7 +67,7 @@ const EditModal = ({ selectedProduct, setEditMode }) => {
   return createPortal(
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm z-50">
       <div className="bg-white rounded-lg shadow-lg p-6 max-w-3xl w-full">
-        <div className="w-full flex justify-between items-center mb-3">
+        <div className="w-full flex justify-between items-center ">
           <h2 className="text-xl font-semibold ">Ürünü güncelle</h2>
           <button
             onClick={() => setEditMode(false)}
@@ -75,23 +76,39 @@ const EditModal = ({ selectedProduct, setEditMode }) => {
             <IoIosCloseCircleOutline size={24} />
           </button>
         </div>
+        <div className="w-full  py-1 text-sm text-zinc-400 mb-3 flex items-center gap-x-1">
+          <span className="text-blue-500">
+            {" "}
+            <TbAlertCircle />
+          </span>
+          Ürün bilgilerini güncellerken lütfen görseli yeniden yükleyiniz.
+        </div>
         <form
           className="flex flex-col gap-3"
           onSubmit={handleSubmit(updateHandle)}
         >
-          <input
-            className="px-4 py-2 rounded-xl text-sm bg-white border outline-none"
-            {...register("productName")}
-          />
-          <input
-            className="px-4 py-2 rounded-xl text-sm bg-white border outline-none"
-            {...register("productStock")}
-          />
-          <input
-            className="px-4 py-2 rounded-xl text-sm bg-white border outline-none"
-            type="file"
-            {...register("productImage")}
-          />
+          <div className="flex flex-col gap-1">
+            <label className="text-sm text-zinc-500">Ürün Adı</label>
+            <input
+              className="px-4 py-2 rounded-xl text-sm bg-white border outline-none"
+              {...register("productName")}
+            />
+          </div>
+          <div className="flex flex-col gap-1">
+            <label className="text-sm text-zinc-500">Ürün Stoğu</label>
+            <input
+              className="px-4 py-2 rounded-xl text-sm bg-white border outline-none"
+              {...register("productStock")}
+            />
+          </div>
+          <div className="flex flex-col gap-1">
+            <label className="text-sm text-zinc-500">Ürün Görseli</label>
+            <input
+              type="file"
+              className="px-4 py-2 rounded-xl text-sm bg-white border outline-none"
+              {...register("productImage")}
+            />
+          </div>
           <div className="flex justify-end mt-3">
             <button
               type="submit"
