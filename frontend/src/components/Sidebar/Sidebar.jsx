@@ -45,7 +45,7 @@ const Sidebar = () => {
           ]}
         />
         <div className=" mt-auto pt-5 border-t ">
-          <Link
+          <div
             to="/my-account"
             className="p-2 hover:bg-neutral-100 flex items-center gap-x-3 rounded-xl cursor-pointer"
           >
@@ -56,7 +56,7 @@ const Sidebar = () => {
                 ozmberkan@gmail.com
               </span>
             </div>
-          </Link>
+          </div>
         </div>
       </div>
     </div>

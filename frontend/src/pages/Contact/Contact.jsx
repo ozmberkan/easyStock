@@ -8,6 +8,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { contactSchema } from "~/validations/scheme";
 import toast from "react-hot-toast";
 import { FaRegPaperPlane } from "react-icons/fa6";
+import axios from "axios";
 
 const Contact = () => {
   const {
@@ -21,7 +22,7 @@ const Contact = () => {
 
   const addContact = async (data) => {
     try {
-      console.log("Gönderilen veriler:", data);
+      await axios.post("http://localhost:5072/api/Contacts", data);
       toast.success("Mesajınız başarıyla gönderildi.");
       reset();
     } catch (error) {
@@ -37,7 +38,6 @@ const Contact = () => {
       transition={{ duration: 0.5 }}
       className="flex flex-col gap-4 flex-grow h-full"
     >
-      {/* Sayfa başlığı */}
       <Breadcrumb title="İletişim" Icon={IoChatboxEllipsesOutline} />
       <div className="my-5">
         <h1 className="font-bold text-2xl">İletişime Geç</h1>
@@ -46,7 +46,6 @@ const Contact = () => {
         </p>
       </div>
 
-      {/* Form */}
       <form
         className="flex flex-col w-1/2 rounded-xl gap-5"
         onSubmit={handleSubmit(addContact)}
@@ -91,7 +90,6 @@ const Contact = () => {
         </button>
       </form>
 
-      {/* İletişim Bilgileri */}
       <div className="flex flex-col gap-6 mt-10">
         {contactAddress.map((address) => (
           <p key={address.id} className="flex gap-x-2 items-center">

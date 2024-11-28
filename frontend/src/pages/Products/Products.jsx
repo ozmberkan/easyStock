@@ -32,16 +32,14 @@ const Products = () => {
     direction: "asc",
   });
 
-  // Sıralama işlemi
   const handleSort = (key) => {
     const direction =
       sortConfig.key === key && sortConfig.direction === "asc" ? "desc" : "asc";
     setSortConfig({ key, direction });
   };
 
-  // Filtreleme ve sıralama kombinasyonu
   const filteredAndSortedProducts = orderBy(
-    products.filter((product) =>
+    products?.filter((product) =>
       product.productName.toLowerCase().includes(search.toLowerCase())
     ),
     [sortConfig.key],

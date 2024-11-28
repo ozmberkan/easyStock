@@ -1,18 +1,46 @@
+import axios from "axios";
 import React from "react";
 import { createPortal } from "react-dom";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import { IoIosCloseCircleOutline } from "react-icons/io";
+import { useDispatch } from "react-redux";
+import { getAllContacts } from "~/redux/slices/contactSlice";
 
-const FeedBackEditModal = ({ setIsModalOpen }) => {
+const FeedBackEditModal = ({ setIsModalOpen, selectedContact }) => {
   const modalRoot = document.getElementById("modal-root");
 
-  const { register, handleSubmit } = useForm();
+  const dispatch = useDispatch();
 
-  const updateHandle = (data) => {
+  const { register, handleSubmit } = useForm({
+    defaultValues: {
+      Name: selectedContact?.name,
+      Title: selectedContact?.title,
+      Message: selectedContact?.message,
+      Status: selectedContact?.status,
+    },
+  });
+
+  const updateHandle = async (data) => {
     try {
-      console.log(data);
+      const payload = {
+        id: selectedContact.id,
+        Name: data.Name,
+        Title: data.Title,
+        Message: data.Message,
+        Status: data.Status,
+      };
+
+      await axios.put(
+        `http://localhost:5072/api/Contacts/${selectedContact.id}`,
+        payload
+      );
+
+      dispatch(getAllContacts());
+      setIsModalOpen(false);
+      toast.success("Geri bildirim başarıyla güncellendi.");
     } catch (error) {
-      console.log(error);
+      console.error("Güncelleme hatası:", error);
     }
   };
 
@@ -42,15 +70,15 @@ const FeedBackEditModal = ({ setIsModalOpen }) => {
           />
           <input
             className="px-4 py-2 rounded-xl text-sm bg-white border outline-none"
-            {...register("Content")}
+            {...register("Message")}
           />
           <select
             className="px-4 py-2 rounded-xl text-sm bg-white border outline-none"
             {...register("Status")}
           >
-            <option value="Bekleniyor">Bekleniyor</option>
-            <option value="Tamamlandı">Tamamlandı</option>
-            <option value="İptal Edildi">İptal Edildi</option>
+            <option value="pending">Bekleniyor</option>
+            <option value="succeeded">Tamamlandı</option>
+            <option value="deleted">İptal Edildi</option>
           </select>
           <div className="flex justify-end mt-3">
             <button

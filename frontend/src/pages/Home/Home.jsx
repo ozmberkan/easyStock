@@ -5,17 +5,19 @@ import { TbAlertCircle, TbHome, TbUserSquareRounded } from "react-icons/tb";
 import { useDispatch, useSelector } from "react-redux";
 import Breadcrumb from "~/components/UI/Breadcrumb";
 import Chart from "~/components/UI/Chart";
+import { getAllContacts } from "~/redux/slices/contactSlice";
 import { getAllProducts } from "~/redux/slices/productSlice";
 
 const Home = () => {
   const { products } = useSelector((state) => state.products);
 
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(getAllProducts());
+    dispatch(getAllContacts());
   }, []);
 
-  console.log(products);
   return (
     <motion.div
       initial={{ opacity: 0 }}

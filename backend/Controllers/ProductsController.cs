@@ -7,7 +7,7 @@ namespace backend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductsController : ControllerBase
+    public class ProductsController : Controller
     {
         private readonly DataContext _context;
 
@@ -38,12 +38,12 @@ namespace backend.Controllers
 
         // Create Product
         [HttpPost]
-        public async Task<ActionResult<Product>> CreateProduct(Product product)
+        public async Task<ActionResult<Product>> CreateProduct(Product model)
         {
-            _context.Products.Add(product);
+            _context.Products.Add(model);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetProduct), new { id = product.Id }, product);
+            return Ok(model);
         }
 
         // Update Product
