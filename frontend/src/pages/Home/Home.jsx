@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { BiBox } from "react-icons/bi";
 import { TbAlertCircle, TbHome, TbUserSquareRounded } from "react-icons/tb";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import Breadcrumb from "~/components/UI/Breadcrumb";
 import Chart from "~/components/UI/Chart";
 import { getAllContacts } from "~/redux/slices/contactSlice";
@@ -34,9 +35,17 @@ const Home = () => {
               Hoş geldin
             </h1>
             <p className="text-sm md:text-base font-medium text-neutral-700">
-              Bugün <span className="font-bold">{products?.length}</span> ürün
-              kontrolü var!
+              Muhammed Berkan Özmen
             </p>
+            <p className="text-xs md:text-xs font-medium text-neutral-700">
+              ozmberkan@gmail.com
+            </p>
+            <Link
+              to="/my-account"
+              className="px-4 py-2 rounded-md bg-neutral-100 border text-neutral-600 mt-3"
+            >
+              Profilim
+            </Link>
           </div>
         </div>
         <div className="bg-white h-[250px] rounded-xl border shadow overflow-hidden relative">
@@ -61,7 +70,9 @@ const Home = () => {
               {products
                 ?.filter((product) => product.productStock < 10)
                 ?.map((product, index) => (
-                  <span key={index}>{product.productName}</span>
+                  <span key={index}>
+                    • {product.productName} - {product.productStock} Adet
+                  </span>
                 ))}
             </div>
           </div>
