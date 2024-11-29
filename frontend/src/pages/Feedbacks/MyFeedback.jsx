@@ -27,6 +27,7 @@ const MyFeedback = ({ contact }) => {
           {dayjs(contact?.createdAt).format("DD.MM.YYYY HH:mm")}
         </span>
       </div>
+
       <div className="flex flex-col gap-2 pt-4">
         <h2 className="flex items-center gap-x-4">
           <TbUser size={15} />
@@ -37,12 +38,38 @@ const MyFeedback = ({ contact }) => {
           {contact?.title}
         </h1>
         <p className="text-sm flex items-center gap-x-4">
-          <span>
-            <PiSubtitles size={15} />
-          </span>
+          <PiSubtitles size={15} />
           {contact?.message.slice(0, 30)}...
         </p>
+
+        <div className="bg-neutral-100 border border-neutral-300 rounded-lg p-4 shadow-md w-full mt-2">
+          <div className="flex items-center gap-x-4 mb-5">
+            <PiSubtitles size={20} />
+            <h3 className="font-semibold text-lg">Yanıt</h3>
+          </div>
+          <p className="text-gray-700 text-sm leading-relaxed break-words">
+            {contact?.reply ? (
+              contact?.reply
+            ) : (
+              <span
+                className={classNames(
+                  "w-full text-sm px-4 py-1 rounded-md transition-colors",
+                  {
+                    "bg-orange-100 text-orange-500 border border-orange-500":
+                      contact?.status === "pending",
+                    "bg-red-100 text-red-500 border border-red-500":
+                      contact?.status === "deleted",
+                  }
+                )}
+              >
+                Henüz yanıtlanmadı
+              </span>
+            )}
+          </p>
+        </div>
       </div>
+
+      {/* Detail Button */}
       <div className="mt-3 border-t flex justify-center items-center gap-5 py-2">
         <Link
           to={`/feedback-detail/${contact.id}`}

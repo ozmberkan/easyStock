@@ -6,6 +6,8 @@ import { addProductInputs } from "~/data/data";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { motion } from "framer-motion";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { addSchema } from "~/validations/scheme";
 
 const Add = () => {
   const [loading, setLoading] = useState(false);
@@ -83,9 +85,13 @@ const Add = () => {
               {input.label}
             </label>
             <input
-              {...register(input.name, { required: true })}
+              {...register(input.name, {
+                required: true,
+              })}
               className={`px-4 py-2 rounded-lg border outline-none ${
-                errors[input.name] ? "border-red-500" : "border-neutral-300"
+                errors[input.name]
+                  ? "border-red-500 text-red-500 placeholder:text-red-500"
+                  : "border-neutral-300"
               }`}
               type={input.type}
               placeholder={input.placeholder}

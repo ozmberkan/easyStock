@@ -43,10 +43,11 @@ const Home = () => {
           <BiBox className="absolute rotate-12 opacity-15 text-[150px] md:text-[200px] lg:text-[250px] -top-6 md:-top-10 lg:-top-12 -right-6 md:-right-10 lg:-right-12 z-0" />
           <div className="flex items-start justify-start h-full p-5 flex-col gap-2 z-10">
             <h1 className="text-lg md:text-xl lg:text-2xl font-semibold pb-2 border-b w-full">
-              Toplam Ürün Sayısı
+              Toplam Ürün Çeşidi
             </h1>
             <p className="text-lg md:text-xl font-bold text-neutral-700">
-              {products?.length}
+              {products?.length}{" "}
+              <span className="font-normal">farklı ürün</span>
             </p>
           </div>
         </div>
@@ -66,7 +67,6 @@ const Home = () => {
           </div>
         </div>
 
-        {/* Stok Sayıları Chart */}
         <div className="bg-white rounded-xl border shadow row-span-2 col-span-1 md:col-span-2 lg:col-span-3">
           <div className="h-full p-6">
             <h1 className="text-lg md:text-xl font-semibold pb-4">

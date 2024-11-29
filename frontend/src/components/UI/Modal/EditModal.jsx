@@ -85,7 +85,7 @@ const EditModal = ({ selectedProduct, setEditMode }) => {
             {" "}
             <TbAlertCircle />
           </span>
-          Ürün bilgilerini güncellerken lütfen görseli yeniden yükleyiniz.
+          Ürün bilgilerini güncellerken lütfen dikkatli olunuz.
         </div>
         <form
           className="flex flex-col gap-3"

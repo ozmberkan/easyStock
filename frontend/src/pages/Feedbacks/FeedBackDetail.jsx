@@ -40,12 +40,23 @@ const FeedBackDetail = () => {
       <div className="bg-neutral-100 border border-neutral-300 rounded-lg p-4 shadow-md w-1/2">
         <div className="flex items-center gap-x-4 mb-2">
           <PiSubtitles size={20} />
-          <h3 className="font-semibold text-lg">Mesaj</h3>
+          <h3 className="font-semibold text-lg">Sizin Mesajınz</h3>
         </div>
         <p className="text-gray-700 text-sm leading-relaxed break-words">
           {contact?.message}
         </p>
       </div>
+      {contact?.reply && (
+        <div className="bg-zinc-100 border border-zinc-300 rounded-lg p-4 shadow-md w-1/2">
+          <div className="flex items-center gap-x-4 mb-2">
+            <PiSubtitles size={20} />
+            <h3 className="font-semibold text-lg">Yönetici Yanıtı</h3>
+          </div>
+          <p className="text-gray-700 text-sm leading-relaxed break-words">
+            {contact?.message}
+          </p>
+        </div>
+      )}
     </motion.div>
   );
 };

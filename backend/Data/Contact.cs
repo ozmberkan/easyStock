@@ -7,6 +7,7 @@ namespace backend.Data
         public string? Title { get; set; }
         public string? Message { get; set; }
         public string? Status { get; set; } = "pending";
+        public string? Reply { get; set; } = "";
         public DateTime CreatedAt { get; set; }
 
         public Contact()

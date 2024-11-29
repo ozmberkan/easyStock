@@ -76,6 +76,15 @@ const Feedback = ({ contact }) => {
           </p>
         </div>
         <div className="mt-3 border-t flex justify-center items-center gap-5 py-2">
+          <button
+            onClick={() => openEdit(contact)}
+            className={classNames(
+              "w-full text-sm px-4 py-1 rounded-md transition-colors",
+              "bg-blue-100 text-blue-500 border border-blue-500 hover:bg-blue-500 hover:text-white"
+            )}
+          >
+            Yanıtla
+          </button>
           <Link
             to={`/feedback-detail/${contact.id}`}
             className={classNames(
@@ -85,15 +94,7 @@ const Feedback = ({ contact }) => {
           >
             Detay
           </Link>
-          <button
-            onClick={() => openEdit(contact)}
-            className={classNames(
-              "w-full text-sm px-4 py-1 rounded-md transition-colors",
-              "bg-blue-100 text-blue-500 border border-blue-500 hover:bg-blue-500 hover:text-white"
-            )}
-          >
-            Düzenle
-          </button>
+
           <button
             onClick={() => handleDelete(contact.id)}
             className={classNames(

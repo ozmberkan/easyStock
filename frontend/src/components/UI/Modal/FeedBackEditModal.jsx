@@ -18,6 +18,7 @@ const FeedBackEditModal = ({ setIsModalOpen, selectedContact }) => {
       Title: selectedContact?.title,
       Message: selectedContact?.message,
       Status: selectedContact?.status,
+      Reply: selectedContact?.reply,
     },
   });
 
@@ -29,6 +30,7 @@ const FeedBackEditModal = ({ setIsModalOpen, selectedContact }) => {
         Title: data.Title,
         Message: data.Message,
         Status: data.Status,
+        Reply: data.Reply,
       };
 
       await axios.put(
@@ -80,6 +82,13 @@ const FeedBackEditModal = ({ setIsModalOpen, selectedContact }) => {
             <input
               className="px-4 py-2 rounded-xl text-sm bg-white border outline-none"
               {...register("Message")}
+            />
+          </div>
+          <div className="flex flex-col gap-1">
+            <label className="text-sm text-zinc-500">Mesaj Yanıtı</label>
+            <input
+              className="px-4 py-2 rounded-xl text-sm bg-white border outline-none"
+              {...register("Reply")}
             />
           </div>
           <div className="flex flex-col gap-1">

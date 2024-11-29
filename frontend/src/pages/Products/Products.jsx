@@ -12,6 +12,8 @@ import axios from "axios";
 import EditModal from "~/components/UI/Modal/EditModal";
 import toast from "react-hot-toast";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
+import { Link } from "react-router-dom";
+import { BsDatabaseAdd } from "react-icons/bs";
 
 const Products = () => {
   const { products } = useSelector((state) => state.products);
@@ -75,12 +77,19 @@ const Products = () => {
           <div className="flex flex-col py-4">
             <div className="overflow-x-auto">
               <div className="lg:min-w-full min-w-3/4 inline-block align-middle">
-                <div className="my-3">
+                <div className="my-3 w-full flex justify-between items-center">
                   <input
                     className="px-4 py-2 rounded-xl outline-none border"
                     placeholder="Ara.."
                     onChange={(e) => setSearch(e.target.value)}
                   />
+                  <Link
+                    to="/add-product"
+                    className="bg-green-100 text-green-500 px-4 py-2 border border-green-500 rounded-xl text-sm flex items-center gap-x-2 hover:bg-green-500 hover:text-white transition-colors duration-300"
+                  >
+                    <BsDatabaseAdd />
+                    Ürün Ekle
+                  </Link>
                 </div>
                 <div className="border border-gray-300 rounded-lg shadow overflow-hidden dark:border-neutral-700">
                   <table

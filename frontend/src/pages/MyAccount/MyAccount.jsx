@@ -23,9 +23,8 @@ const MyAccount = () => {
       transition={{ duration: 0.5 }}
       className="flex flex-col gap-4 flex-grow h-full"
     >
-      {/* Sayfa başlığı */}
       <Breadcrumb title="Profilim" Icon={TbUser} />
-      <div className="grid grid-cols-3">
+      <div className="grid grid-cols-3 gap-5">
         {contacts?.length > 0 ? (
           contacts?.map((contact) => (
             <MyFeedback key={contact.id} contact={contact} />
