@@ -22,34 +22,36 @@ const EditModal = ({ selectedProduct, setEditMode }) => {
   });
 
   const updateHandle = async (data) => {
-    let uploadedImageUrl = selectedProduct.productImage;
-
-    if (data.productImage && data.productImage[0]) {
-      const file = data.productImage[0];
-
-      const formData = new FormData();
-      formData.append("file", file);
-      formData.append("upload_preset", "qlsmtlwm");
-      formData.append("cloud_name", "dlzdj5p8p");
-
-      const res = await fetch(
-        `https://api.cloudinary.com/v1_1/dlzdj5p8p/image/upload`,
-        {
-          method: "POST",
-          body: formData,
-        }
-      );
-
-      const uploadedImage = await res.json();
-      uploadedImageUrl = uploadedImage.secure_url;
-    }
-
     try {
+      let imageUrl = selectedProduct.productImage;
+
+      if (data.productImage && data.productImage.length > 0) {
+        const file = data.productImage[0];
+
+        const formData = new FormData();
+        formData.append("file", file);
+        formData.append("upload_preset", "qlsmtlwm");
+        formData.append("cloud_name", "dlzdj5p8p");
+
+        const res = await fetch(
+          `https://api.cloudinary.com/v1_1/dlzdj5p8p/image/upload`,
+          {
+            method: "POST",
+            body: formData,
+          }
+        );
+
+        if (res.ok) {
+          const uploadedImage = await res.json();
+          imageUrl = uploadedImage.secure_url;
+        }
+      }
+
       const payload = {
         id: selectedProduct.id,
         productName: data.productName,
         productStock: data.productStock,
-        productImage: uploadedImageUrl || "",
+        productImage: imageUrl,
       };
 
       await axios.put(
@@ -62,8 +64,10 @@ const EditModal = ({ selectedProduct, setEditMode }) => {
       toast.success("Ürün başarıyla güncellendi.");
     } catch (error) {
       console.error("Güncelleme hatası:", error);
+      toast.error("Ürün güncellenirken bir hata oluştu.");
     }
   };
+
   return createPortal(
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm z-50">
       <div className="bg-white rounded-lg shadow-lg p-6 max-w-3xl w-full">
